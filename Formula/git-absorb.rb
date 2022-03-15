@@ -8,6 +8,9 @@ class GitAbsorb < Formula
 
   def install
     system "cargo", "install", *std_cargo_args
+    (bash_completion/"git-absorb").write `#{bin}/git-absorb --gen-completions bash`
+    (fish_completion/"git-absorb.fish").write `#{bin}/git-absorb --gen-completions fish`
+    (zsh_completion/"_git-absorb").write `#{bin}/git-absorb --gen-completions zsh`
   end
 
   test do
